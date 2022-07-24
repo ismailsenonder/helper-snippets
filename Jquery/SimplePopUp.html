@@ -1,0 +1,143 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<style type="text/css">
+#popupmask {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}  
+#popupboxes .window {
+  position:absolute;
+  left:0;
+  top:0;
+  width:440px;
+  height:200px;
+  display:none;
+  z-index:9999;
+  padding:20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+@media (min-width:320px) {
+    #popupboxes #dialog {
+        width: 90%;
+        height: auto;
+        padding: 10px;
+        background-color: #ffffff;
+        font-family: 'Segoe UI Light', sans-serif;
+        font-size: 15pt;
+        text-align: center;
+    }
+}
+
+@media (min-width:600px) {
+    #popupboxes #dialog {
+        width: 70%;
+        height: auto;
+        padding: 10px;
+        background-color: #ffffff;
+        font-family: 'Segoe UI Light', sans-serif;
+        font-size: 15pt;
+        text-align: center;
+    }
+}
+
+@media (min-width:1000px) {
+    #popupboxes #dialog {
+        width: 50%;
+        height: auto;
+        padding: 10px;
+        background-color: #ffffff;
+        font-family: 'Segoe UI Light', sans-serif;
+        font-size: 15pt;
+        text-align: center;
+    }
+}
+
+
+
+
+#popupbodytext{
+	font-family: "Segoe UI", sans-serif;
+	font-size: 12pt;
+    padding: 15px;
+}
+
+#popupfoot{
+	font-family: "Segoe UI", sans-serif;
+	font-size: 16pt;
+  padding: 10px 20px;
+}
+#popupfoot a{
+	text-decoration: none;
+}
+
+</style>
+
+<div>
+    THIS IS THE PAGE CONTENT
+</div>
+
+<div id="popupboxes">
+    <div style="display: none;" id="dialog" class="window">
+        <h3>THIS IS THE POPUP TITLE</h3>
+        <div id="popupbodytext">
+            <p>THIS IS THE POPUP CONTENT - LOREM IPSUM DOLOR SIT AMET... </p>
+        </div>
+        <div id="popupfoot"><a href="#" class="close agree">CLOSE</a> </div>
+    </div>
+    <div style="font-size: 32pt; color: white; display: none; opacity: 0.8;" id="popupmask"></div>
+</div>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {	
+
+		var id = '#dialog';
+	
+		//Get the screen height and width
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+	
+		//Set heigth and width to popupmask to fill up the whole screen
+		$('#popupmask').css({'width':maskWidth,'height':maskHeight});
+		
+		//transition effect		
+		$('#popupmask').fadeIn(500);	
+		$('#popupmask').fadeTo("slow",0.9);	
+	
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+              
+		//Set the popup window to center
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+	
+		//transition effect
+		$(id).fadeIn(2000); 	
+	
+	//if close button is clicked
+	$('.window .close').click(function (e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		$('#popupmask').hide();
+		$('.window').hide();
+	});		
+	
+	//if mask is clicked
+	$('#popupmask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});		
+	
+});
+</script>

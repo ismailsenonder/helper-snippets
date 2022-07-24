@@ -1,0 +1,23 @@
+﻿<script type="text/javascript">
+    function isAlphaNumeric(str) {
+        var code, i, len;
+
+        for (i = 0, len = str.length; i < len; i++) {
+            code = str.charCodeAt(i);
+            if (!(code > 47 && code < 58) && // numeric (0-9)
+                !(code > 64 && code < 91) && // upper letters (A-Z)
+                !(code > 96 && code < 123)) { // lower letters (a-z)
+                return false;
+            }
+        }
+        return true;
+    };
+
+</script>
+
+This method checks if a string is alphanumeric or not.
+<br />
+Your text: <input id="Text1" name="text1" type="text" />
+<br />
+<input id="Button1" type="button" value="check"
+    onclick="alert(isAlphaNumeric(document.getElementById('Text1').value))" />

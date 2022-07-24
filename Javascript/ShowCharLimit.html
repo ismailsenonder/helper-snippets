@@ -1,0 +1,5 @@
+﻿<label for="message">Your Message (Max. 250 Characters)<span class="require">*</span></label>
+<textarea class="form-control" maxlength="250" rows="8" id="message2"
+    onkeyup="document.getElementById('remainingchars').innerText = 250 - document.getElementById('message2').value.length;"></textarea>
+Remaining:
+<label id="remainingchars"></label>
