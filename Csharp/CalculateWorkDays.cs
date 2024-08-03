@@ -1,14 +1,6 @@
+using System;
 
-//Calculates factorial of an integer
-public static int Factorial(int n)
-{
-    if (n <= 1)
-        return 1;
-    else
-        return n * Factorial(n - 1);
-}
-
-//Calculates work days between two given dates (excluding weekend).
+//Returns the number of days between two dates excluding weekends.
 public static int CalculateWorkDays(DateTime firstDay, DateTime lastDay)
 {
     firstDay = firstDay.Date;
@@ -16,7 +8,7 @@ public static int CalculateWorkDays(DateTime firstDay, DateTime lastDay)
     if (firstDay > lastDay)
         throw new ArgumentException("Incorrect last day " + lastDay);
 
-    TimeSpan span = lastDay - firstDay;
+    var span = lastDay - firstDay;
     int businessDays = span.Days + 1;
     int fullWeekCount = businessDays / 7;
 
@@ -40,16 +32,4 @@ public static int CalculateWorkDays(DateTime firstDay, DateTime lastDay)
 
     businessDays -= fullWeekCount + fullWeekCount;
     return businessDays;
-}
-
-//Converts Celsius to Fahrenheit
-public static double CelsiusToFahrenheit(string temperatureCelsius)
-{
-    return (Double.Parse(temperatureCelsius) * 9 / 5) + 32;
-}
-
-//Converts Fahrenheit to Celsius
-public static double FahrenheitToCelsius(string temperatureFahrenheit)
-{
-    return (Double.Parse(temperatureFahrenheit) - 32) * 5 / 9;
 }

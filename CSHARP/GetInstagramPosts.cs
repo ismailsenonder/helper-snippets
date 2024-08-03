@@ -145,10 +145,6 @@ public class Instagram
 
     2. If you need to convert json string to a class object and loop through, 
         the code has Newtonsoft.Json dependency.
-
-    3. The code was originally written for a .Net Core console project but it can be used 
-        in any project type on both .Net Standart and .Net Core. 
-        Just copy the method and paste it in your code.
 */
 
 public static string GetInstagramPosts(string accesstoken, int count)
