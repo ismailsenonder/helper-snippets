@@ -12,7 +12,7 @@ public class Logger
         return Path.Combine(logFolderPath, $"{date}.log");
     }
 
-    public static void WriteLog(string message, )
+    public static void WriteLog(string message)
     {
         // Ensure the Logs folder exists
         if (!Directory.Exists(logFolderPath))
