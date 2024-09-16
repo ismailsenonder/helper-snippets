@@ -29,3 +29,17 @@ WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA='dbName'
 
 /* MySQL: Find all procedures and functions that uses, references or depends on a table */
 SELECT * FROM Mysql.proc where body LIKE '%table_name%';
+
+/* MySQL: Find all procedures, functions and triggers that has a certain text */
+
+-- Procedures and functions
+    SELECT ROUTINE_NAME, ROUTINE_TYPE, ROUTINE_DEFINITION
+FROM information_schema.ROUTINES
+WHERE ROUTINE_DEFINITION LIKE '%search_text%'
+  AND ROUTINE_SCHEMA = 'dbname';
+
+-- Triggers
+  SELECT TRIGGER_NAME, ACTION_STATEMENT
+FROM information_schema.TRIGGERS
+WHERE ACTION_STATEMENT LIKE '%search_text%'
+  AND TRIGGER_SCHEMA = 'dbname';
